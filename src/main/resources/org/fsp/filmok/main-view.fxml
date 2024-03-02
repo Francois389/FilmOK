@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="620.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsp.filmok.VuePrincipalControleur">
+    <children>
+        <Label alignment="CENTER" layoutX="252.0" layoutY="22.0" text="FilmOK" textAlignment="CENTER"
+               AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="252.0">
+            <font>
+                <Font size="30.0"/>
+            </font>
+        </Label>
+        <Button layoutX="463.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleValider"
+                style="-fx-background-color: green;" text="Valider" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+        <TextField fx:id="inputCheminFichierExcel" layoutX="42.0" layoutY="107.0" prefHeight="45.0" prefWidth="426.0"
+                   promptText="Chemin absolue vers le fichier Excel" AnchorPane.leftAnchor="40.0"
+                   AnchorPane.rightAnchor="144.0">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </TextField>
+        <TableView fx:id="tableFilms" layoutX="42.0" layoutY="190.0" prefHeight="380.0" prefWidth="505.0"
+                   AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0"/>
+    </children>
+</AnchorPane>

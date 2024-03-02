@@ -3,6 +3,6 @@ module org.fsp.moviechecker {
     requires javafx.fxml;
 
 
-    opens org.fsp.moviechecker to javafx.fxml;
-    exports org.fsp.moviechecker;
+    opens org.fsp.filmok to javafx.fxml;
+    exports org.fsp.filmok;
 }

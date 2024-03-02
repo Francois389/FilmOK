@@ -3,7 +3,7 @@
  * IUT de Rodez, pas de droit d'auteur
  */
 
-package org.fsp.moviechecker;
+package org.fsp.filmok;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
