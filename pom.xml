@@ -22,8 +22,8 @@
         </dependency>
         <dependency> <!-- Lire les LibreOfficeCalc (.ods) -->
             <groupId>org.odftoolkit</groupId>
-            <artifactId>simple-odf</artifactId>
-            <version>0.8.2</version>
+            <artifactId>odfdom-java</artifactId>
+            <version>0.12.0</version>
         </dependency>
 
 
