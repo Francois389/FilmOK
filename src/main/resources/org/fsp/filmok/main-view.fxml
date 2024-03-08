@@ -25,7 +25,7 @@
             </font>
         </TextField>
         <TableView fx:id="tableFilms" layoutX="42.0" layoutY="190.0" prefHeight="380.0" prefWidth="505.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="210.0" />
-      <Button  layoutX="370.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleParcourir" prefHeight="45.0" prefWidth="108.0" style="-fx-background-color: grey;" text="Parcourir..." textFill="WHITE" AnchorPane.rightAnchor="120.0">
+      <Button layoutX="370.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleParcourir" prefHeight="45.0" prefWidth="108.0" style="-fx-background-color: grey;" text="Parcourir..." textFill="WHITE" AnchorPane.rightAnchor="120.0">
          <font>
             <Font size="18.0" />
          </font>
