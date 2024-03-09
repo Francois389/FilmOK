@@ -119,6 +119,11 @@ public class ClasseurExcel implements Classeur {
     }
 
     @Override
+    public ArrayList<String> getNomsColonnes() {
+        return getNomsColonnes(feuilleActive.getSheetName());
+    }
+
+    @Override
     public ArrayList<String> getValeurs(String nomColonne) {
         ArrayList<String> columnValues = new ArrayList<>();
         int indiceColonne = getNomsColonnes(feuilleActive.getSheetName()).indexOf(nomColonne);

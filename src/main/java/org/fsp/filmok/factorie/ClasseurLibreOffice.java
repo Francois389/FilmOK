@@ -57,6 +57,10 @@ public class ClasseurLibreOffice implements Classeur{
         return null;
     }
 
+    public ArrayList<String> getNomsColonnes() {
+        return null;
+    }
+
     @Override
     public ArrayList<String> getValeurs(String nomColonne) {
         return null;

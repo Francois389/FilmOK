@@ -16,6 +16,7 @@ public interface Classeur {
 
     public ArrayList<String> getNomsColonnes(String nomFeuille);
     public ArrayList<String> getNomsColonnes(int indiceFeuille);
+    public ArrayList<String> getNomsColonnes();
 
 
     public ArrayList<String> getValeurs(String nomColonne);
