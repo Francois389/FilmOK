@@ -3,13 +3,18 @@
  * IUT de Rodez, pas de droit d'auteur
  */
 
-package org.fsp.filmok;
+package org.fsp.filmok.controleur;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import org.fsp.filmok.FilmeOKApplication;
+import org.fsp.filmok.factorie.Classeur;
+import org.fsp.filmok.factorie.ClasseurFactorie;
+import org.fsp.filmok.modele.Film;
+import org.fsp.filmok.modele.ModelePrincipal;
 
 import java.io.File;
 
@@ -24,29 +29,42 @@ public class VuePrincipalControleur {
     private static final Alert ALERT_CLASSEUR_INEXISTANT
             = new Alert(Alert.AlertType.ERROR, "Classeur inexistant. Vérifiez le chemin");
 
+    private final ModelePrincipal modelePrincipal = ModelePrincipal.getInstance();
+    private final ClasseurFactorie classeurFactorie = ClasseurFactorie.getInstance();
+
     @FXML
     private TextField inputCheminFichierExcel;
 
     @FXML
-    private TableView<Film> tableFilms;
-
-    public void chargerFichierExcel() {
-        // TODO
-    }
-
-    @FXML
     public void handleValider() {
-        // TODO
-        System.out.println("Valider");
         String cheminClasseurSaisie = inputCheminFichierExcel.getText();
-        System.out.println(cheminClasseurSaisie);
+        System.out.println("Chemin saisie : " + cheminClasseurSaisie);
+
+        //On vérifie si le chemin est valide,
+        //si oui, on charge le classeur
+        //sinon on affiche une boite de dialogue avec un message d'erreur
         if (estClasseurValide(cheminClasseurSaisie)) {
             chargerClasseur(cheminClasseurSaisie);
+            FilmeOKApplication.changerScene("");
         }
     }
 
+
+    /**
+     * Charge le classeur
+     * Si le chargement échoue, affiche une boite de dialogue avec un message d'erreur
+     * @param cheminClasseurSaisie
+     */
     private void chargerClasseur(String cheminClasseurSaisie) {
-        // TODO
+        try {
+            Classeur classeur
+                    = classeurFactorie.getClasseur(cheminClasseurSaisie);
+            modelePrincipal.setClasseur(classeur);
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR,
+                    "Erreur lors du chargement du classeur");
+            alert.showAndWait();
+        }
     }
 
     /**

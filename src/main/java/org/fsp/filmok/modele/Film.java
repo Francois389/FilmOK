@@ -3,7 +3,7 @@
  * IUT de Rodez, pas de droit d'auteur
  */
 
-package org.fsp.filmok;
+package org.fsp.filmok.modele;
 
 import java.util.Date;
 
@@ -36,6 +36,10 @@ public class Film {
         this.realisateur = realisateur;
         this.duree = duree;
         this.resume = resume;
+    }
+
+    public Film(String titre) {
+        this.titre = titre;
     }
 
     private void dureeValide(int duree) {
