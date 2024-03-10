@@ -34,11 +34,12 @@ public class ClasseurFactorie {
         return instance;
     }
 
-    public Classeur getClasseur(String nomFichier) {
+    public Classeur getClasseur(String nomFichier) throws IOException {
         Classeur classeurResultat = null;
         for (Classeur classeur : classeurs) {
             if (classeur.peutTraiter(nomFichier)) {
-                classeurResultat = classeur;
+
+                classeurResultat = classeur.creerClasseur(nomFichier);
             }
         }
         if (classeurResultat == null) {

@@ -12,6 +12,15 @@ import java.util.ArrayList;
  * @author François de Saint Palais
  */
 public class ClasseurLibreOffice implements Classeur{
+
+    public ClasseurLibreOffice() {
+
+    }
+
+    public ClasseurLibreOffice(String nomFichier) {
+
+    }
+
     @Override
     public void setCheminClasseur(String cheminClasseur) {
 
@@ -40,11 +49,6 @@ public class ClasseurLibreOffice implements Classeur{
     @Override
     public ArrayList<String> getNomsFeuilles() {
         return null;
-    }
-
-    @Override
-    public void creerFeuille(String nomFeuille) {
-
     }
 
     @Override
@@ -94,5 +98,10 @@ public class ClasseurLibreOffice implements Classeur{
     @Override
     public boolean peutTraiter(String nomFichier) {
         return false;
+    }
+
+    @Override
+    public Classeur creerClasseur(String nomFichier) {
+        return new ClasseurLibreOffice(nomFichier);
     }
 }

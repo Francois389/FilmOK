@@ -1,6 +1,7 @@
 package org.fsp.filmok.factorie;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public interface Classeur {
@@ -12,7 +13,6 @@ public interface Classeur {
     public void setFeuilleActive(String nomFeuille);
     public void setFeuilleActive(int indiceFeuille);
     public ArrayList<String> getNomsFeuilles();
-    public void creerFeuille(String nomFeuille);
 
     public ArrayList<String> getNomsColonnes(String nomFeuille);
     public ArrayList<String> getNomsColonnes(int indiceFeuille);
@@ -54,4 +54,5 @@ public interface Classeur {
 
 
     boolean peutTraiter(String nomFichier);
+    Classeur creerClasseur(String nomFichier) throws IOException;
 }

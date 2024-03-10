@@ -186,4 +186,9 @@ public class ClasseurExcel implements Classeur {
     public boolean peutTraiter(String nomFichier) {
         return nomFichier.endsWith(".xlsx") || nomFichier.endsWith(".xls");
     }
+
+    @Override
+    public Classeur creerClasseur(String nomFichier) throws IOException {
+        return new ClasseurExcel(nomFichier);
+    }
 }
