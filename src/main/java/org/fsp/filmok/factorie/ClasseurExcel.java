@@ -22,7 +22,11 @@ public class ClasseurExcel implements Classeur {
     private Sheet feuilleActive;
 
     protected ClasseurExcel() throws IOException {
-        workbook = WorkbookFactory.create(true);
+        try {
+            workbook = WorkbookFactory.create(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public ClasseurExcel(String cheminClasseur) throws IOException {
@@ -76,11 +80,6 @@ public class ClasseurExcel implements Classeur {
     }
 
     @Override
-    public void creerFeuille(String nomFeuille) {
-
-    }
-
-    @Override
     public ArrayList<String> getNomsColonnes(String nomFeuille) {
         ArrayList<String> columnNames = new ArrayList<>();
 
@@ -125,15 +124,8 @@ public class ClasseurExcel implements Classeur {
 
     @Override
     public ArrayList<String> getValeurs(String nomColonne) {
-        ArrayList<String> columnValues = new ArrayList<>();
         int indiceColonne = getNomsColonnes(feuilleActive.getSheetName()).indexOf(nomColonne);
-
-        for (Row row : feuilleActive) {
-            Cell cell = row.getCell(indiceColonne);
-            columnValues.add(cell.getStringCellValue());
-        }
-
-        return columnValues;
+        return getValeurs(indiceColonne);
     }
 
     @Override
@@ -145,25 +137,25 @@ public class ClasseurExcel implements Classeur {
             columnValues.add(cell.getStringCellValue());
         }
 
+        // On retire le nom de la colonne
+        columnValues.removeFirst();
+
         return columnValues;
     }
 
     @Override
     public void setValeursEcrase(String nomColonne, ArrayList<String> valeurs) {
-
         int indiceColonne = getNomsColonnes(feuilleActive.getSheetName()).indexOf(nomColonne);
-
-        for (int i = 0; i < valeurs.size(); i++) {
-            Row row = feuilleActive.getRow(i);
-            Cell cell = row.getCell(indiceColonne);
-            cell.setCellValue(valeurs.get(i));
-        }
-
+        setValeursEcrase(indiceColonne, valeurs);
     }
 
     @Override
     public void setValeursEcrase(int indiceColonne, ArrayList<String> valeurs) {
-
+        for (int i = 1; i <= valeurs.size(); i++) {
+            Row row = feuilleActive.getRow(i);
+            Cell cell = row.createCell(indiceColonne);
+            cell.setCellValue(valeurs.get(i - 1));
+        }
     }
 
     @Override

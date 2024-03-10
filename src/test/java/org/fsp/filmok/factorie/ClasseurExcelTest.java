@@ -87,14 +87,9 @@ class ClasseurExcelTest {
     void testGetNomsFeuilles() {
         //Given un classeur Excel
         //When on récupère les noms des feuilles
-        //Then il y a une seule feuille "Feuil1"
-        assertEquals(2, classeurExcel.getNomsFeuilles().size());
+        //Then il y a trois feuilles "Feuil1", "Feuil2" et "Feuil3"
+        assertEquals(3, classeurExcel.getNomsFeuilles().size());
         assertTrue(classeurExcel.getNomsFeuilles().contains("Feuil1"));
-    }
-
-    @Test
-    void creerFeuille() {
-        fail();
     }
 
     @Test
