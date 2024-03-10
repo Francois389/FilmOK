@@ -45,7 +45,7 @@ public class VuePrincipalControleur {
         //sinon on affiche une boite de dialogue avec un message d'erreur
         if (estClasseurValide(cheminClasseurSaisie)) {
             chargerClasseur(cheminClasseurSaisie);
-            FilmeOKApplication.changerScene("");
+            FilmeOKApplication.loadEtChangerScene("parametreClasseur.fxml");
         }
     }
 
@@ -105,6 +105,5 @@ public class VuePrincipalControleur {
 
     @FXML
     void initialize() {
-        // TODO
     }
 }
