@@ -55,4 +55,5 @@ public interface Classeur {
 
     boolean peutTraiter(String nomFichier);
     Classeur creerClasseur(String nomFichier) throws IOException;
+
 }
