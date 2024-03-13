@@ -1,58 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsp.filmok.controleur.ParametreClasseurControleur">
-   <children>
-      <Label alignment="CENTER" layoutX="286.0" layoutY="31.0" text="Paramètre du classeur" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Separator layoutX="12.0" layoutY="197.0" prefWidth="200.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="8.0" />
-      <HBox alignment="CENTER" layoutX="-7.0" layoutY="145.0" prefHeight="26.0" prefWidth="345.0" spacing="40.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0">
-         <children>
-            <Label text="Feuille des données" />
-            <ComboBox fx:id="listeFeuilles" prefWidth="150.0" />
-         </children>
-      </HBox>
-      <Separator layoutX="7.0" layoutY="83.0" prefWidth="200.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="13.0" />
-      <Label alignment="CENTER" layoutX="6.0" layoutY="209.0" text="Selectionner une colonne par paramètre de filme" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" />
-      <Label alignment="CENTER" layoutX="-3.0" layoutY="226.0" text="La liste représente les colonnes présente dans votre classeur" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0" />
-      <GridPane alignment="CENTER" layoutX="19.0" layoutY="265.0" prefHeight="66.0" prefWidth="787.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="73.66667175292969" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Titre" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Label alignment="CENTER" text="Date sorti" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-            <Label alignment="CENTER" text="Réalisateur" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-            <Label alignment="CENTER" text="Durée" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-            <Label alignment="CENTER" text="Résumé" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
-            <ComboBox fx:id="colonnesTitre" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <ComboBox fx:id="colonnesDateSorti" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <ComboBox fx:id="colonnesRealisateur" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <ComboBox fx:id="colonnesDuree" prefWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <ComboBox fx:id="colonnesResume" prefWidth="150.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="95.0" text="Selectionner la feuille où ce trouve vos données" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Label alignment="CENTER" layoutY="113.0" text="La liste comporte toute les feuilles de votre classeur" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-   </children>
+<AnchorPane prefHeight="504.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsp.filmok.controleur.ParametreClasseurControleur">
+    <children>
+        <Label alignment="CENTER" layoutX="6.0" layoutY="31.0" text="Paramètre du classeur" textAlignment="CENTER" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Separator layoutX="12.0" layoutY="197.0" prefWidth="200.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="8.0" />
+        <HBox alignment="CENTER" layoutX="-7.0" layoutY="145.0" prefHeight="26.0" prefWidth="345.0" spacing="40.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0">
+            <children>
+                <Label text="Feuille des données" />
+                <ComboBox fx:id="listeFeuilles" prefWidth="150.0" />
+            </children>
+        </HBox>
+        <Separator layoutX="7.0" layoutY="83.0" prefWidth="200.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="13.0" />
+        <Label alignment="CENTER" layoutX="6.0" layoutY="209.0" text="Selectionner une colonne par paramètre de filme" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" />
+        <Label alignment="CENTER" layoutX="-3.0" layoutY="226.0" text="La liste représente les colonnes présente dans votre classeur" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0" />
+        <GridPane fx:id="containerChoixColonnes" alignment="CENTER" layoutX="19.0" layoutY="265.0" prefHeight="66.0" prefWidth="787.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="73.66667175292969" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Titre" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                <Label alignment="CENTER" text="Date sorti" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                <Label alignment="CENTER" text="Réalisateur" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                <Label alignment="CENTER" text="Durée" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+                <Label alignment="CENTER" text="Résumé" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
+                <ComboBox fx:id="colonnesTitre" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <ComboBox fx:id="colonnesDateSorti" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <ComboBox fx:id="colonnesRealisateur" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <ComboBox fx:id="colonnesDuree" prefWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <ComboBox fx:id="colonnesResume" prefWidth="150.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            </children>
+        </GridPane>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="95.0" text="Selectionner la feuille où ce trouve vos données" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Label alignment="CENTER" layoutY="113.0" text="La liste comporte toute les feuilles de votre classeur" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Label alignment="CENTER" layoutX="440.0" layoutY="350.0" text="Si aucune colonne n'est choisi, une colonne vide sera utilisé" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Separator layoutX="331.0" layoutY="397.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <Button layoutX="388.0" layoutY="427.0" mnemonicParsing="false" onAction="#confirmer" prefHeight="45.0" prefWidth="110.0" style="-fx-background-color: green;" text="Confirmer" textFill="WHITE" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="380.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+    </children>
 </AnchorPane>
