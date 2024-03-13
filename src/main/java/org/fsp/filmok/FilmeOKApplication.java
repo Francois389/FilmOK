@@ -65,7 +65,7 @@ public class FilmeOKApplication extends Application {
 
     private static void loadScene(String nomFichier) {
         if (!scenes.containsKey(nomFichier)) {
-            FXMLLoader loader = new FXMLLoader(Vue.class.getResource(nomFichier));
+            FXMLLoader loader = new FXMLLoader(FilmeOKApplication.class.getResource(nomFichier));
             try {
                 Scene scene = new Scene(loader.load());
                 scenes.put(nomFichier, scene);
