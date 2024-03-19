@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import org.fsp.filmok.controleur.VuePrincipalControleur;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -57,7 +56,7 @@ public class FilmeOKApplication extends Application {
 
     public static void changerScene(String nomFichier) {
         if (!scenes.containsKey(nomFichier)) {
-            throw new IllegalArgumentException("La scène " + nomFichier + " n'a pas été chargée");
+            throw new IllegalArgumentException(STR."La scène \{nomFichier} n'a pas été chargée");
         }
         fenetrePrincipale.setScene(scenes.get(nomFichier));
     }
@@ -72,17 +71,18 @@ public class FilmeOKApplication extends Application {
             try {
                 Scene scene = new Scene(loader.load());
                 scenes.put(nomFichier, scene);
-                System.out.println("Chargement de la scène " + loader.getLocation());
+                System.out.println(STR."Chargement de la scène \{loader.getLocation()}");
+
             } catch (IllegalStateException e) {
-                System.out.println("Nom de fichier ou chemin incorrect : " + nomFichier);
+                System.out.println(STR."Nom de fichier ou chemin incorrect : \{nomFichierExtension}");
             } catch (LoadException e) {
-                System.out.println("Erreur dans le fichier fxml ou la méthode \"initialize\" du controleur : " + loader.getLocation());
+                System.out.println(STR."Erreur dans le fichier fxml ou la méthode \"initialize\" du controleur : \{loader.getLocation()}");
                 e.printStackTrace();
             } catch (IOException e) {
-                System.out.println("Impossible de charger la scène " + loader.getLocation());
+                System.out.println(STR."Impossible de charger la scène \{loader.getLocation()}");
                 e.printStackTrace();
             } catch (Exception e) {
-                System.out.println("Erreur inconnue lors du chargement de la scène " + loader.getLocation());
+                System.out.println(STR."Erreur inconnue lors du chargement de la scène \{loader.getLocation()}");
                 e.printStackTrace();
             }
         }
