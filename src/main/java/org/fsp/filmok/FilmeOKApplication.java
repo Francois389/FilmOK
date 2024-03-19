@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Charge e lance l'application.
+ * Charge et lance l'application.
  * @author François de Saint Palais
  */
 public class FilmeOKApplication extends Application {
@@ -32,7 +32,7 @@ public class FilmeOKApplication extends Application {
         chargementApplication();
 
         fenetrePrincipale = stage;
-        changerScene("main-view.fxml");
+        changerScene("main-view");
         fenetrePrincipale.setTitle("FilmOK");
         fenetrePrincipale.setResizable(false);
         fenetrePrincipale.show();
@@ -42,8 +42,7 @@ public class FilmeOKApplication extends Application {
         scenes = new HashMap<>();
         ressources = new ArrayList<String>();
 
-        ressources.add("main-view.fxml");
-        ressources.add("parametreClasseur.fxml");
+        ressources.add("main-view");
 
         for (String ressource : ressources) {
             loadScene(ressource);
@@ -64,8 +63,12 @@ public class FilmeOKApplication extends Application {
     }
 
     private static void loadScene(String nomFichier) {
+        if (!nomFichier.substring(nomFichier.length() - 4).equals(".fxml")) {
+            nomFichierExtension += ".fxml";
+        }
         if (!scenes.containsKey(nomFichier)) {
-            FXMLLoader loader = new FXMLLoader(FilmeOKApplication.class.getResource(nomFichier));
+            FXMLLoader loader = new FXMLLoader(FilmeOKApplication.class.getResource(nomFichierExtension));
+
             try {
                 Scene scene = new Scene(loader.load());
                 scenes.put(nomFichier, scene);
