@@ -91,11 +91,11 @@ public class FilmeOKApplication extends Application {
      * @param nomFichier le nom du fichier fxml, sans l'extension
      */
     private static void loadScene(String nomFichier) {
-        String nomFichierExtension = nomFichier;
+        String nomFichierExtension = STR."\{nomFichier}.fxml";
 
-        // Ajout de l'extension si elle n'est pas présente
-        if (!nomFichier.substring(nomFichier.length() - 4).equals(".fxml")) {
-            nomFichierExtension += ".fxml";
+        // Si le chemin du fichier contient l'extension, on lève une exception
+        if (nomFichier.substring(nomFichier.length() - 4).equals(".fxml")) {
+            throw new IllegalArgumentException("Le nom de fichier ne doit pas contenir l'extension");
         }
 
         if (!scenes.containsKey(nomFichier)) {

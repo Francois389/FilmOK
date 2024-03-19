@@ -21,17 +21,17 @@ import java.util.ArrayList;
  */
 public class ParametreClasseurControleur {
     @FXML
-    public ComboBox colonnesTitre;
+    public ComboBox<String> colonnesTitre;
     @FXML
-    public ComboBox colonnesDateSorti;
+    public ComboBox<String> colonnesDateSorti;
     @FXML
-    public ComboBox colonnesRealisateur;
+    public ComboBox<String> colonnesRealisateur;
     @FXML
-    public ComboBox colonnesDuree;
+    public ComboBox<String> colonnesDuree;
     @FXML
-    public ComboBox colonnesResume;
+    public ComboBox<String> colonnesResume;
     @FXML
-    public ComboBox listeFeuilles;
+    public ComboBox<String> listeFeuilles;
     @FXML
     public GridPane containerChoixColonnes;
 
@@ -62,11 +62,28 @@ public class ParametreClasseurControleur {
 
     private void remplirListe() {
         ArrayList<String> colonnes = classeur.getNomsColonnes();
-        colonnesTitre.getItems().addAll(colonnes);
-        colonnesDateSorti.getItems().addAll(colonnes);
-        colonnesRealisateur.getItems().addAll(colonnes);
-        colonnesDuree.getItems().addAll(colonnes);
-        colonnesResume.getItems().addAll(colonnes);
+
+        if (colonnes.isEmpty()) {
+            containerChoixColonnes.setDisable(true);
+        } else {
+            containerChoixColonnes.setDisable(false);
+
+            colonnesTitre.getItems().clear();
+            colonnesTitre.getItems().addAll(colonnes);
+
+            colonnesDateSorti.getItems().clear();
+            colonnesDateSorti.getItems().addAll(colonnes);
+
+            colonnesRealisateur.getItems().clear();
+            colonnesRealisateur.getItems().addAll(colonnes);
+
+            colonnesDuree.getItems().clear();
+            colonnesDuree.getItems().addAll(colonnes);
+
+            colonnesResume.getItems().clear();
+            colonnesResume.getItems().addAll(colonnes);
+        }
+
     }
 
     @FXML
@@ -77,7 +94,7 @@ public class ParametreClasseurControleur {
         modelePrincipal.setColonneDuree(colonnesDuree.getSelectionModel().getSelectedIndex());
         modelePrincipal.setColonneResume(colonnesResume.getSelectionModel().getSelectedIndex());
 
-        //FilmeOKApplication.loadEtChangerScene("vuePrincipal.fxml");
+        FilmeOKApplication.loadEtChangerScene("resultat");
     }
 
 }

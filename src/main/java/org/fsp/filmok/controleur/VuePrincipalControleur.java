@@ -38,14 +38,14 @@ public class VuePrincipalControleur {
     @FXML
     public void handleValider() {
         String cheminClasseurSaisie = inputCheminFichierExcel.getText();
-        System.out.println("Chemin saisie : " + cheminClasseurSaisie);
+        System.out.println(STR."Chemin saisie : \{cheminClasseurSaisie}");
 
         //On vérifie si le chemin est valide,
         //si oui, on charge le classeur
         //sinon on affiche une boite de dialogue avec un message d'erreur
         if (estClasseurValide(cheminClasseurSaisie)) {
             chargerClasseur(cheminClasseurSaisie);
-            FilmeOKApplication.loadEtChangerScene("parametreClasseur.fxml");
+            FilmeOKApplication.loadEtChangerScene("parametreClasseur");
         }
     }
 
@@ -53,7 +53,7 @@ public class VuePrincipalControleur {
     /**
      * Charge le classeur
      * Si le chargement échoue, affiche une boite de dialogue avec un message d'erreur
-     * @param cheminClasseurSaisie
+     * @param cheminClasseurSaisie le chemin du classeur
      */
     private void chargerClasseur(String cheminClasseurSaisie) {
         try {
@@ -70,8 +70,8 @@ public class VuePrincipalControleur {
     /**
      * Vérifie si le chemin du classeur est valide
      * Affiche une boite de dialogue avec un message d'erreur s'il n'est pas valide
-     * @param cheminClasseur
-     * @return
+     * @param cheminClasseur le chemin du classeur
+     * @return true si le classeur est valide, false sinon
      */
     private boolean estClasseurValide(String cheminClasseur) {
         boolean estValide = true;
