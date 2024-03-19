@@ -22,8 +22,20 @@ import java.util.HashMap;
  */
 public class FilmeOKApplication extends Application {
 
+
+    /**
+     * Le nom des fichiers fxml, sans l'extension, associés à leur Scene.
+     */
     private static HashMap<String, Scene> scenes;
+
+    /**
+     * Les noms des fichiers fxml, sans l'extension.
+     */
     private static ArrayList<String> ressources;
+
+    /**
+     * La fenêtre principale de l'application.
+     */
     private static Stage fenetrePrincipale;
 
     @Override
@@ -37,6 +49,11 @@ public class FilmeOKApplication extends Application {
         fenetrePrincipale.show();
     }
 
+    /**
+     * Enregistre les ressources et
+     * charge les ressources de l'application.
+     * Les ressources ne doivent dépendre de valeur initialisée par d'autre ressource.
+     */
     private void chargementApplication() {
         scenes = new HashMap<>();
         ressources = new ArrayList<String>();
@@ -49,11 +66,19 @@ public class FilmeOKApplication extends Application {
 
     }
 
+    /**
+     * Charge une scène et bascule la vue vers cette scène.
+     * @param nomFichier le nom du fichier fxml, sans l'extension
+     */
     public static void loadEtChangerScene(String nomFichier) {
         loadScene(nomFichier);
         changerScene(nomFichier);
     }
 
+    /**
+     * Bascule la vue vers une scène déjà chargée.
+     * @param nomFichier le nom du fichier fxml, sans l'extension
+     */
     public static void changerScene(String nomFichier) {
         if (!scenes.containsKey(nomFichier)) {
             throw new IllegalArgumentException(STR."La scène \{nomFichier} n'a pas été chargée");
@@ -61,10 +86,18 @@ public class FilmeOKApplication extends Application {
         fenetrePrincipale.setScene(scenes.get(nomFichier));
     }
 
+    /**
+     * Charge un fichier fxml en Scene et l'ajoute à la liste des scènes.
+     * @param nomFichier le nom du fichier fxml, sans l'extension
+     */
     private static void loadScene(String nomFichier) {
+        String nomFichierExtension = nomFichier;
+
+        // Ajout de l'extension si elle n'est pas présente
         if (!nomFichier.substring(nomFichier.length() - 4).equals(".fxml")) {
             nomFichierExtension += ".fxml";
         }
+
         if (!scenes.containsKey(nomFichier)) {
             FXMLLoader loader = new FXMLLoader(FilmeOKApplication.class.getResource(nomFichierExtension));
 
