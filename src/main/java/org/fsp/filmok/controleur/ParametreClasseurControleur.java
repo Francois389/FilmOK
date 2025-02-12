@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 import org.fsp.filmok.FilmeOKApplication;
+import org.fsp.filmok.FilmeOKApplication.View;
 import org.fsp.filmok.factorie.Classeur;
 import org.fsp.filmok.modele.ModelePrincipal;
 
@@ -49,14 +50,11 @@ public class ParametreClasseurControleur {
         ArrayList<String> feuilles = classeur.getNomsFeuilles();
         listeFeuilles.getItems().addAll(feuilles);
 
-        listeFeuilles.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                classeur.setFeuilleActive(newValue);
-                containerChoixColonnes.setDisable(false);
+        listeFeuilles.valueProperty().addListener((observable, oldValue, newValue) -> {
+            classeur.setFeuilleActive(newValue);
+            containerChoixColonnes.setDisable(false);
 
-                remplirListe();
-            }
+            remplirListe();
         });
     }
 
@@ -94,7 +92,7 @@ public class ParametreClasseurControleur {
         modelePrincipal.setColonneDuree(colonnesDuree.getSelectionModel().getSelectedIndex());
         modelePrincipal.setColonneResume(colonnesResume.getSelectionModel().getSelectedIndex());
 
-        FilmeOKApplication.loadEtChangerScene("resultat");
+        FilmeOKApplication.loadEtChangerScene(View.RESULTAT);
     }
 
 }

@@ -7,13 +7,12 @@ package org.fsp.filmok.controleur;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import org.fsp.filmok.FilmeOKApplication;
+import org.fsp.filmok.FilmeOKApplication.View;
 import org.fsp.filmok.factorie.Classeur;
 import org.fsp.filmok.factorie.ClasseurFactorie;
-import org.fsp.filmok.modele.Film;
 import org.fsp.filmok.modele.ModelePrincipal;
 
 import java.io.File;
@@ -38,14 +37,14 @@ public class VuePrincipalControleur {
     @FXML
     public void handleValider() {
         String cheminClasseurSaisie = inputCheminFichierExcel.getText();
-        System.out.println(STR."Chemin saisie : \{cheminClasseurSaisie}");
+        System.out.printf("Chemin saisie : %s%n", cheminClasseurSaisie);
 
         //On vérifie si le chemin est valide,
         //si oui, on charge le classeur
-        //sinon on affiche une boite de dialogue avec un message d'erreur
+        //sinon on affiche une boite de dialogue avec un message d'erreur.
         if (estClasseurValide(cheminClasseurSaisie)) {
             chargerClasseur(cheminClasseurSaisie);
-            FilmeOKApplication.loadEtChangerScene("parametreClasseur");
+            FilmeOKApplication.loadEtChangerScene(View.PARAMETRE_CLASSEUR);
         }
     }
 
@@ -53,6 +52,7 @@ public class VuePrincipalControleur {
     /**
      * Charge le classeur
      * Si le chargement échoue, affiche une boite de dialogue avec un message d'erreur
+     *
      * @param cheminClasseurSaisie le chemin du classeur
      */
     private void chargerClasseur(String cheminClasseurSaisie) {
@@ -70,6 +70,7 @@ public class VuePrincipalControleur {
     /**
      * Vérifie si le chemin du classeur est valide
      * Affiche une boite de dialogue avec un message d'erreur s'il n'est pas valide
+     *
      * @param cheminClasseur le chemin du classeur
      * @return true si le classeur est valide, false sinon
      */
@@ -78,11 +79,11 @@ public class VuePrincipalControleur {
         if (cheminClasseur == null || cheminClasseur.isEmpty() || cheminClasseur.isBlank()) {
             estValide = false;
             ALERT_CHEMIN_CLASSEUR_VIDE.showAndWait();
-        } else if (   ! cheminClasseur.endsWith(".xlsx")
-                   && ! cheminClasseur.endsWith(".ods")){
+        } else if (!cheminClasseur.endsWith(".xlsx")
+                && !cheminClasseur.endsWith(".ods")) {
             estValide = false;
             ALERT_CLASSEUR_EXTENSION_INVALIDE.showAndWait();
-        } else if (! new File(cheminClasseur).exists()) {
+        } else if (!new File(cheminClasseur).exists()) {
             estValide = false;
             ALERT_CLASSEUR_INEXISTANT.showAndWait();
         }
@@ -94,9 +95,9 @@ public class VuePrincipalControleur {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choisir un fichier Excel");
         fileChooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("Classeur Excel", "*.xlsx"),
-        new FileChooser.ExtensionFilter("LibreOffice Classeur", "*.ods"),
-        new FileChooser.ExtensionFilter("All Files", "*.*"));
+                new FileChooser.ExtensionFilter("Classeur Excel", "*.xlsx"),
+                new FileChooser.ExtensionFilter("LibreOffice Classeur", "*.ods"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
             inputCheminFichierExcel.setText(file.getAbsolutePath());
