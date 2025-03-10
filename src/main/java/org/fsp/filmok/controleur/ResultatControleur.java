@@ -53,39 +53,6 @@ public class ResultatControleur {
 
     }
 
-    class LigneFilm {
-        private String titre;
-        private String dateSortie;
-        private String realisateur;
-        private String duree;
-        private String resume;
-
-        public LigneFilm(String titre, String dateSortie, String realisateur, String duree, String resume) {
-            this.titre = titre;
-            this.dateSortie = dateSortie;
-            this.realisateur = realisateur;
-            this.duree = duree;
-            this.resume = resume;
-        }
-
-        public String getTitre() {
-            return titre;
-        }
-
-        public String getDateSortie() {
-            return dateSortie;
-        }
-
-        public String getRealisateur() {
-            return realisateur;
-        }
-
-        public String getDuree() {
-            return duree;
-        }
-
-        public String getResume() {
-            return resume;
-        }
+    record LigneFilm(String titre, String dateSortie, String realisateur, String duree, String resume) {
     }
 }
