@@ -15,7 +15,7 @@ public class ClasseurFactorie {
 
     private static ClasseurFactorie instance;
 
-    private ArrayList<Classeur> classeurs;
+    private final ArrayList<Classeur> classeurs;
 
     private ClasseurFactorie() {
         try {
@@ -35,17 +35,11 @@ public class ClasseurFactorie {
     }
 
     public Classeur getClasseur(String nomFichier) throws IOException {
-        Classeur classeurResultat = null;
-        for (Classeur classeur : classeurs) {
-            if (classeur.peutTraiter(nomFichier)) {
-
-                classeurResultat = classeur.creerClasseur(nomFichier);
-            }
-        }
-        if (classeurResultat == null) {
-            throw new IllegalArgumentException("Aucun classeur ne peut traiter le fichier " + nomFichier);
-        }
-        return classeurResultat;
+        return classeurs.stream()
+                .filter(classeur -> classeur.peutTraiter(nomFichier))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Aucun classeur ne peut traiter le fichier %s", nomFichier)))
+                .creerClasseur(nomFichier);
     }
 
 
