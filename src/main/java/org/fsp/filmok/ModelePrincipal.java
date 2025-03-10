@@ -3,7 +3,7 @@
  * IUT de Rodez, pas de droit d'auteur
  */
 
-package org.fsp.filmok.modele;
+package org.fsp.filmok;
 
 import org.fsp.filmok.classeur.Classeur;
 import org.fsp.filmok.film.Film;

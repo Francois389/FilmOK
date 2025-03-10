@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 import org.fsp.filmok.FilmeOKApplication;
 import org.fsp.filmok.FilmeOKApplication.View;
 import org.fsp.filmok.classeur.Classeur;
-import org.fsp.filmok.modele.ModelePrincipal;
+import org.fsp.filmok.ModelePrincipal;
 
 import java.util.ArrayList;
 
