@@ -32,10 +32,10 @@ public class ClasseurExcel implements Classeur {
     public ClasseurExcel(String cheminClasseur) throws IOException {
         File classeur = new File(cheminClasseur);
         if (!classeur.exists()) {
-            throw new IllegalArgumentException("Le fichier " + cheminClasseur + " n'existe pas");
+            throw new IllegalArgumentException(String.format("Le fichier %s n'existe pas", cheminClasseur));
         }
         if (!classeur.isFile()) {
-            throw new IllegalArgumentException(cheminClasseur + " n'est pas un fichier");
+            throw new IllegalArgumentException(String.format("%s n'est pas un fichier", cheminClasseur));
         }
 
         workbook = WorkbookFactory.create(classeur);
