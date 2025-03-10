@@ -6,28 +6,29 @@
 package org.fsp.filmok;
 
 import org.fsp.filmok.classeur.Classeur;
+import org.fsp.filmok.classeur.ClasseurFilme;
 import org.fsp.filmok.film.Film;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author François de Saint Palais
  */
 public class ModelePrincipal {
 
+    private static final Logger log = LoggerFactory.getLogger(ModelePrincipal.class);
     private static ModelePrincipal instance;
 
-    private Classeur classeur;
-
-    private int colonneTitre;
-    private int colonneDateSortie;
-    private int colonneRealisateur;
-    private int colonneDuree;
-    private int colonneResume;
+    private ClasseurFilme classeur;
 
     private ArrayList<Film> films;
 
-    private ModelePrincipal() {}
+    private ModelePrincipal() {
+    }
 
     public static ModelePrincipal getInstance() {
         if (instance == null) {
@@ -36,56 +37,17 @@ public class ModelePrincipal {
         return instance;
     }
 
-    public void setClasseur(Classeur classeur) {
-        this.classeur = classeur;
-    }
-
-    public Classeur getClasseur() {
+    public ClasseurFilme getClasseur() {
         return classeur;
     }
 
-    public int getColonneTitre() {
-        return colonneTitre;
+    public void setClasseur(Classeur classeur) throws IOException {
+        this.classeur = new ClasseurFilme(classeur);
+        log.info("{}", classeur);
     }
 
-    public void setColonneTitre(int colonneTitre) {
-        this.colonneTitre = colonneTitre;
-    }
-
-    public int getColonneDateSortie() {
-        return colonneDateSortie;
-    }
-
-    public void setColonneDateSortie(int colonneDateSortie) {
-        this.colonneDateSortie = colonneDateSortie;
-    }
-
-    public int getColonneRealisateur() {
-        return colonneRealisateur;
-    }
-
-    public void setColonneRealisateur(int colonneRealisateur) {
-        this.colonneRealisateur = colonneRealisateur;
-    }
-
-    public int getColonneDuree() {
-        return colonneDuree;
-    }
-
-    public void setColonneDuree(int colonneDuree) {
-        this.colonneDuree = colonneDuree;
-    }
-
-    public int getColonneResume() {
-        return colonneResume;
-    }
-
-    public void setColonneResume(int colonneResume) {
-        this.colonneResume = colonneResume;
-    }
-
-    public ArrayList<Film> getFilms() {
-        return films;
+    public List<Film> getFilms() {
+        return classeur.getFilms();
     }
 
     public void setFilms(ArrayList<Film> films) {

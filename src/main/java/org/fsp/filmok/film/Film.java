@@ -52,13 +52,10 @@ public class Film {
         if (realisateur == null) {
             throw new IllegalArgumentException("Le réalisateur ne doit pas être null");
         }
-        if (realisateur.isEmpty() || realisateur.isBlank()) {
-            throw new IllegalArgumentException("Le réalisateur ne doit pas être vide");
-        }
     }
 
     private void premiereSortieValide(Date premiereSortie) {
-        if (premiereSortie.after(new Date())) {
+        if (premiereSortie != null && premiereSortie.after(new Date())) {
             throw new IllegalArgumentException("La date de sortie ne peut pas être dans le futur");
         }
     }

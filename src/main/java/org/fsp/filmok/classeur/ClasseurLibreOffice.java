@@ -5,13 +5,16 @@
 
 package org.fsp.filmok.classeur;
 
+import org.apache.poi.ss.usermodel.Row;
+
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author François de Saint Palais
  */
-public class ClasseurLibreOffice implements Classeur{
+public class ClasseurLibreOffice implements Classeur {
 
     public ClasseurLibreOffice() {
 
@@ -103,5 +106,10 @@ public class ClasseurLibreOffice implements Classeur{
     @Override
     public Classeur creerClasseur(String nomFichier) {
         return new ClasseurLibreOffice(nomFichier);
+    }
+
+    @Override
+    public List<Row> getRows() {
+        return null;
     }
 }

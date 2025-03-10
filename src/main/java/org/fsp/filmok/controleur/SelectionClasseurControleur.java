@@ -11,22 +11,25 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import org.fsp.filmok.FilmeOKApplication;
 import org.fsp.filmok.FilmeOKApplication.View;
+import org.fsp.filmok.ModelePrincipal;
 import org.fsp.filmok.classeur.Classeur;
 import org.fsp.filmok.classeur.ClasseurFactorie;
-import org.fsp.filmok.ModelePrincipal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
 /**
  * @author François de Saint Palais
  */
-public class VuePrincipalControleur {
+public class SelectionClasseurControleur {
     private static final Alert ALERT_CHEMIN_CLASSEUR_VIDE
             = new Alert(Alert.AlertType.ERROR, "Chemin de classeur vide");
     private static final Alert ALERT_CLASSEUR_EXTENSION_INVALIDE
             = new Alert(Alert.AlertType.ERROR, "Le fichier doit être un classeur Excel ou LibreOffice");
     private static final Alert ALERT_CLASSEUR_INEXISTANT
             = new Alert(Alert.AlertType.ERROR, "Classeur inexistant. Vérifiez le chemin");
+    private static final Logger log = LoggerFactory.getLogger(SelectionClasseurControleur.class);
 
     private final ModelePrincipal modelePrincipal = ModelePrincipal.getInstance();
     private final ClasseurFactorie classeurFactorie = ClasseurFactorie.getInstance();
@@ -59,11 +62,13 @@ public class VuePrincipalControleur {
         try {
             Classeur classeur
                     = classeurFactorie.getClasseur(cheminClasseurSaisie);
+            log.info("{}", classeur);
             modelePrincipal.setClasseur(classeur);
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR,
                     "Erreur lors du chargement du classeur");
             alert.showAndWait();
+            log.error("{}", e);
         }
     }
 

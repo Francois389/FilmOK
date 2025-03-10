@@ -10,8 +10,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 import org.fsp.filmok.FilmeOKApplication;
 import org.fsp.filmok.FilmeOKApplication.View;
-import org.fsp.filmok.classeur.Classeur;
 import org.fsp.filmok.ModelePrincipal;
+import org.fsp.filmok.classeur.Classeur;
+import org.fsp.filmok.classeur.ClasseurFilme;
+import org.fsp.filmok.classeur.ClasseurFilme.FilmField;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ import java.util.ArrayList;
  * @author François de Saint Palais
  */
 public class ParametreClasseurControleur {
+    private static final ModelePrincipal modelePrincipal = ModelePrincipal.getInstance();
     @FXML
     public ComboBox<String> colonnesTitre;
     @FXML
@@ -33,15 +36,11 @@ public class ParametreClasseurControleur {
     public ComboBox<String> listeFeuilles;
     @FXML
     public GridPane containerChoixColonnes;
-
-
-    private static final ModelePrincipal modelePrincipal = ModelePrincipal.getInstance();
-
     private Classeur classeur;
 
     @FXML
     void initialize() {
-        classeur = modelePrincipal.getClasseur();
+        classeur = modelePrincipal.getClasseur().getClasseur();
 
         containerChoixColonnes.setDisable(true);
 
@@ -84,11 +83,12 @@ public class ParametreClasseurControleur {
 
     @FXML
     public void confirmer() {
-        modelePrincipal.setColonneTitre(colonnesTitre.getSelectionModel().getSelectedIndex());
-        modelePrincipal.setColonneDateSortie(colonnesDateSorti.getSelectionModel().getSelectedIndex());
-        modelePrincipal.setColonneRealisateur(colonnesRealisateur.getSelectionModel().getSelectedIndex());
-        modelePrincipal.setColonneDuree(colonnesDuree.getSelectionModel().getSelectedIndex());
-        modelePrincipal.setColonneResume(colonnesResume.getSelectionModel().getSelectedIndex());
+        ClasseurFilme classeurFilme = modelePrincipal.getClasseur();
+        classeurFilme.updateColum(FilmField.TITRE, colonnesTitre.getSelectionModel().getSelectedIndex());
+        classeurFilme.updateColum(FilmField.DATE_SORTIE, colonnesDateSorti.getSelectionModel().getSelectedIndex());
+        classeurFilme.updateColum(FilmField.REALISATEUR, colonnesRealisateur.getSelectionModel().getSelectedIndex());
+        classeurFilme.updateColum(FilmField.DUREE, colonnesDuree.getSelectionModel().getSelectedIndex());
+        classeurFilme.updateColum(FilmField.RESUME, colonnesResume.getSelectionModel().getSelectedIndex());
 
         FilmeOKApplication.loadEtChangerScene(View.RESULTAT);
     }

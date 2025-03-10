@@ -2,6 +2,7 @@ module org.fsp.moviechecker {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.apache.poi.poi;
+    requires org.slf4j;
 
 
     opens org.fsp.filmok to javafx.fxml;
