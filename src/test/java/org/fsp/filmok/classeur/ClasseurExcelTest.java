@@ -1,6 +1,5 @@
-package org.fsp.filmok.factorie;
+package org.fsp.filmok.classeur;
 
-import org.fsp.filmok.classeur.ClasseurExcel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
