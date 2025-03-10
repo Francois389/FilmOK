@@ -1,26 +1,29 @@
 package org.fsp.filmok.classeur;
 
+import org.apache.poi.ss.usermodel.Row;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface Classeur {
 
-    public void setCheminClasseur(String cheminClasseur);
-    public void setCheminClasseur(File classeur);
+    void setCheminClasseur(String cheminClasseur);
+    void setCheminClasseur(File classeur);
 
-    public String getNomFeuilleActive();
-    public void setFeuilleActive(String nomFeuille);
-    public void setFeuilleActive(int indiceFeuille);
-    public ArrayList<String> getNomsFeuilles();
+    String getNomFeuilleActive();
+    void setFeuilleActive(String nomFeuille);
+    void setFeuilleActive(int indiceFeuille);
+    ArrayList<String> getNomsFeuilles();
 
-    public ArrayList<String> getNomsColonnes(String nomFeuille);
-    public ArrayList<String> getNomsColonnes(int indiceFeuille);
-    public ArrayList<String> getNomsColonnes();
+    ArrayList<String> getNomsColonnes(String nomFeuille);
+    ArrayList<String> getNomsColonnes(int indiceFeuille);
+    ArrayList<String> getNomsColonnes();
 
 
-    public ArrayList<String> getValeurs(String nomColonne);
-    public ArrayList<String> getValeurs(int indiceColonne);
+    ArrayList<String> getValeurs(String nomColonne);
+    ArrayList<String> getValeurs(int indiceColonne);
 
     /**
      * Modifie les valeurs d'une colonne du classeur
@@ -28,14 +31,14 @@ public interface Classeur {
      * @param nomColonne Le nom de la colonne à modifier
      * @param valeurs La liste des valeurs à insérer
      */
-    public void setValeursEcrase(String nomColonne, ArrayList<String> valeurs);
+    void setValeursEcrase(String nomColonne, ArrayList<String> valeurs);
     /**
      * Modifie les valeurs d'une colonne du classeur
      * Écrase les valeurs précédentes
      * @param indiceColonne L'indice de la colonne à modifier
      * @param valeurs La liste des valeurs à insérer
      */
-    public void setValeursEcrase(int indiceColonne, ArrayList<String> valeurs);
+    void setValeursEcrase(int indiceColonne, ArrayList<String> valeurs);
 
     /**
      * Ajoute des valeurs à une colonne du classeur
@@ -43,17 +46,18 @@ public interface Classeur {
      * @param nomColonne Le nom de la colonne à modifier
      * @param valeurs La liste des valeurs à insérer
      */
-    public void addValeurs(String nomColonne, ArrayList<String> valeurs);
+    void addValeurs(String nomColonne, ArrayList<String> valeurs);
     /**
      * Ajoute des valeurs à une colonne du classeur
      * Les valeurs sont ajoutées à la suite des valeurs existantes
      * @param indiceColonne L'indice de la colonne à modifier
      * @param valeurs La liste des valeurs à insérer
      */
-    public void addValeurs(int indiceColonne, ArrayList<String> valeurs);
+    void addValeurs(int indiceColonne, ArrayList<String> valeurs);
 
 
     boolean peutTraiter(String nomFichier);
     Classeur creerClasseur(String nomFichier) throws IOException;
 
+    List<Row> getRows();
 }
