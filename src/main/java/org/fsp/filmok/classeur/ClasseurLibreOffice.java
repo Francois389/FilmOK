@@ -3,7 +3,7 @@
  * IUT de Rodez, pas de droit d'auteur
  */
 
-package org.fsp.filmok.factorie;
+package org.fsp.filmok.classeur;
 
 import java.io.File;
 import java.util.ArrayList;

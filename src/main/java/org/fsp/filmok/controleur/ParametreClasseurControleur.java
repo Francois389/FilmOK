@@ -5,14 +5,12 @@
 
 package org.fsp.filmok.controleur;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 import org.fsp.filmok.FilmeOKApplication;
 import org.fsp.filmok.FilmeOKApplication.View;
-import org.fsp.filmok.factorie.Classeur;
+import org.fsp.filmok.classeur.Classeur;
 import org.fsp.filmok.modele.ModelePrincipal;
 
 import java.util.ArrayList;

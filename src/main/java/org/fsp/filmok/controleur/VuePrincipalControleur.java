@@ -11,8 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import org.fsp.filmok.FilmeOKApplication;
 import org.fsp.filmok.FilmeOKApplication.View;
-import org.fsp.filmok.factorie.Classeur;
-import org.fsp.filmok.factorie.ClasseurFactorie;
+import org.fsp.filmok.classeur.Classeur;
+import org.fsp.filmok.classeur.ClasseurFactorie;
 import org.fsp.filmok.modele.ModelePrincipal;
 
 import java.io.File;

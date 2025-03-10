@@ -1,4 +1,4 @@
-package org.fsp.filmok.factorie;
+package org.fsp.filmok.classeur;
 
 import java.io.File;
 import java.io.IOException;

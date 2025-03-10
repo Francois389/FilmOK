@@ -14,4 +14,6 @@ module org.fsp.moviechecker {
     opens org.fsp.filmok.controleur to javafx.fxml;
     exports org.fsp.filmok.film;
     opens org.fsp.filmok.film to javafx.fxml;
+    exports org.fsp.filmok.classeur;
+    opens org.fsp.filmok.classeur to javafx.fxml;
 }
