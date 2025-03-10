@@ -10,14 +10,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.fsp.filmok.controleur.VuePrincipalControleur;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Charge et lance l'application.
+ *
  * @author François de Saint Palais
  */
 public class FilmeOKApplication extends Application {
@@ -33,33 +32,9 @@ public class FilmeOKApplication extends Application {
      */
     private static Stage fenetrePrincipale;
 
-    @Override
-    public void start(Stage stage) {
-        chargementApplication();
-
-        fenetrePrincipale = stage;
-        changerScene(View.MAIN_VIEW);
-        fenetrePrincipale.setTitle("FilmOK");
-        fenetrePrincipale.setResizable(false);
-        fenetrePrincipale.show();
-    }
-
-    /**
-     * Enregistre les ressources et
-     * charge les ressources de l'application.
-     * Les ressources ne doivent dépendre de valeur initialisée par d'autre ressource.
-     */
-    private void chargementApplication() {
-        scenes = new HashMap<>();
-
-        // Chargement des ressources
-        for (View view : View.values()) {
-            loadScene(view);
-        }
-    }
-
     /**
      * Charge une scène et bascule la vue vers cette scène.
+     *
      * @param view le nom du fichier fxml, sans l'extension
      */
     public static void loadEtChangerScene(View view) {
@@ -69,6 +44,7 @@ public class FilmeOKApplication extends Application {
 
     /**
      * Bascule la vue vers une scène déjà chargée.
+     *
      * @param nomFichier le nom du fichier fxml, sans l'extension
      */
     public static void changerScene(View view) {
@@ -77,6 +53,7 @@ public class FilmeOKApplication extends Application {
 
     /**
      * Charge un fichier fxml en Scene et l'ajoute à la liste des scènes.
+     *
      * @param nomFichier le nom du fichier fxml, sans l'extension
      */
     private static void loadScene(View view) {
@@ -105,6 +82,31 @@ public class FilmeOKApplication extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) {
+        chargementApplication();
+
+        fenetrePrincipale = stage;
+        changerScene(View.MAIN_VIEW);
+        fenetrePrincipale.setTitle("FilmOK");
+        fenetrePrincipale.setResizable(false);
+        fenetrePrincipale.show();
+    }
+
+    /**
+     * Enregistre les ressources et
+     * charge les ressources de l'application.
+     * Les ressources ne doivent dépendre de valeur initialisée par d'autre ressource.
+     */
+    private void chargementApplication() {
+        scenes = new HashMap<>();
+
+        // Chargement des ressources
+        for (View view : View.values()) {
+            loadScene(view);
+        }
     }
 
     public enum View {

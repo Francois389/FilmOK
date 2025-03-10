@@ -3,13 +3,14 @@
  * IUT de Rodez, pas de droit d'auteur
  */
 
-package org.fsp.filmok.factorie;
+package org.fsp.filmok.classeur;
+
+import org.apache.poi.ss.usermodel.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import org.apache.poi.ss.usermodel.*;
+import java.util.List;
 
 /**
  * Classeur pour les fichiers Excel
@@ -182,5 +183,18 @@ public class ClasseurExcel implements Classeur {
     @Override
     public Classeur creerClasseur(String nomFichier) throws IOException {
         return new ClasseurExcel(nomFichier);
+    }
+
+    @Override
+    public List<Row> getRows() {
+        int numberOfRows = feuilleActive.getPhysicalNumberOfRows();
+
+        List<Row> rows = new ArrayList<>(numberOfRows);
+
+        for (int i = 0; i < numberOfRows; i++) {
+            rows.add(feuilleActive.getRow(i));
+        }
+
+        return rows;
     }
 }

@@ -1,6 +1,6 @@
 package org.fsp.filmok;
 
-import org.fsp.filmok.modele.Film;
+import org.fsp.filmok.film.Film;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
