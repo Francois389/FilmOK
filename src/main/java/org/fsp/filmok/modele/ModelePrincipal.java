@@ -6,6 +6,7 @@
 package org.fsp.filmok.modele;
 
 import org.fsp.filmok.factorie.Classeur;
+import org.fsp.filmok.film.Film;
 
 import java.util.ArrayList;
 

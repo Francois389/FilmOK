@@ -3,7 +3,7 @@
  * IUT de Rodez, pas de droit d'auteur
  */
 
-package org.fsp.filmok.modele;
+package org.fsp.filmok.film;
 
 import java.util.Date;
 
